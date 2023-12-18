@@ -1,1 +1,3 @@
 # Uncommon Language Framework (ULF) and Uncommon Language Interface (ULI) Spec
+
+This repository contains the informal specification for the Uncommon Language Framework/Uncommon Language Interface (ULF/ULI). [This specification]() describes the ULI and its object model, [this specification]() describes compilers implementing ULF languages, and [this specification]() describes ULR assemblies and the ULR.

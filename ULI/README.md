@@ -1,1 +1,0 @@
-# Uncommon Language Interface & Object Model Specification

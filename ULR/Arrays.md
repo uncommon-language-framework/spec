@@ -1,10 +1,14 @@
 # Array Specification
 
-Arrays in the ULR are implemented as pointers of elements of the specified type. For reference types, arrays are simply pointers to `void*` in the target C/C++, and since the size of value types are known at compile time, arrays of value types are simply pointers to `sizeof_ValueType` where `sizeof_ValueType` is a class/struct type whose size is equivalent to the size of the value type it represents. Thus, arrays implemented in the ULR are identical to C/C++ arrays, **with one important caveat -- ULR arrays contain four extra bytes of space preceding the array containing an `int` which holds the size of the array**. This holds the size and differs from null-termination of arrays because it avoids iteration to retrieve the size and allows for zeroed default value type instances without accidentally terminating the array. To alleviate confusion, a diagram of both a reference type and value type array for a 32-bit system is shown below. Each `[]` is a byte.
+Arrays in the ULR are implemented as pointers of elements of the specified type. For reference types, arrays are simply pointers to `void*` in the target C/C++, and since the size of value types are known at compile time, arrays of value types are simply pointers to `sizeof_ValueType` where `sizeof_ValueType` is a class/struct type whose size is equivalent to the size of the value type it represents. Thus, arrays implemented in the ULR are identical to C/C++ arrays, **with one important caveat -- ULR arrays contain eight to twelve extra bytes of space preceding the array (eight bytes on a 32-bit system and twelve ona 64-bit system) where the first 4-8 bytes of the header (the system pointer size) contains a pointer to the C++ type object representing the array's type and the last four bytes of the header contains an `int` which holds the size of the array**. This holds the size and differs from null-termination of arrays because it avoids iteration to retrieve the size and allows for zeroed default value type instances without accidentally terminating the array. To alleviate confusion, a diagram of both a reference type and value type array for a 32-bit system is shown below. Each `[]` is a byte.
 
 ## Array of Reference Type Instances
 ```
 -- pointer starts here --
+[]    |
+[]    | -- These bytes begin the header, they point to the internal type object
+[]    | --/
+[]    |
 []    |
 []    | -- These bytes hold the size of the array
 []    | --/
@@ -28,6 +32,10 @@ Each value type instance here has a size of 6 bytes
 
 ```
 -- pointer starts here --
+[]    |
+[]    | -- These bytes begin the header, they point to the internal type object
+[]    | --/
+[]    |
 []    |
 []    | -- These bytes hold the size of the array
 []    | --/

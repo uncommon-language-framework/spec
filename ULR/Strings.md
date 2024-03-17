@@ -1,0 +1,3 @@
+# ULR Strings
+
+Strings in the ULR are implemented identical to arrays; their memory layout is exactly identical to that of a ULR `System.Char[]` with the exception that the type pointer would point to the `System.String` type. The only difference is a string's immutability and availability of different functionality and methods. For information on how arrays are implement, see [ULR Arrays](./Arrays.md).

@@ -1,6 +1,6 @@
 # ULR Metadata Specification
 
-Metadata is crucial to the loading of assemblies in the ULR. Each assembly DLL must export two metadata symbols: `char* ulr_meta` and [`void* ulr_addr[]`](ULRAddr.md). The `ulr_meta` symbol should be a char pointer to a string literal containing all type information of the assembly to be read by the ULR Loader, in the following format:
+Metadata is crucial to the loading of assemblies in the ULR. Each assembly DLL must export two metadata symbols: `char* ulrmeta` and [`void* ulraddr[]`](ULRAddr.md). The `ulrmeta` symbol should be a char pointer to a string literal containing all type information of the assembly to be read by the ULR Loader, in the following format:
 
 ### Typenames
 

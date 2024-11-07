@@ -48,6 +48,7 @@ Each value type instance here has a size of 6 bytes
 []    |
 []    |
 -- 1st index here --
+
 []    |
 []    | -- These six bytes are a value object
 []    | --/

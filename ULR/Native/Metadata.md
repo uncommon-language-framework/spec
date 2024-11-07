@@ -1,6 +1,6 @@
 # ULR Metadata Specification
 
-Metadata is crucial to the loading of assemblies in the ULR. Each assembly DLL must export two metadata symbols: `char* ulrmeta` and [`void* ulraddr[]`](ULRAddr.md). The `ulrmeta` symbol should be a char pointer to a string literal containing all type information of the assembly to be read by the ULR Loader, in the following format:
+Metadata is crucial to the loading of native assemblies in the ULR. Each assembly DLL must export two metadata symbols: `char* ulrmeta` and [`void* ulraddr[]`](ULRAddr.md). The `ulrmeta` symbol should be a char pointer to a string literal containing all type information of the assembly to be read by the ULR Loader, in the following format:
 
 ### Typenames
 
@@ -14,7 +14,7 @@ All parameter lists should be enclosed within parentheses and comma separated. T
 
 The metadata should begin right with one of the classes declared in the assembly. The class declaration should be written with access modifier letters followed by the type modifier letter (e.g. class/interface/struct) followed by the typename in metadata format. For all modifier letters, see [Modifier Letters](./ModifierLetters.md).
 
-Following the typename, there should be a semicolon (`:`) and then the typename of the base class. Following the typename of the base class, there should be a comma and then a comma-separated list of implemented interfaces. If the class does not implement any interfaces, the comma is STILL REQUIRED at the end of the base class typename.
+Following the typename, there should be a semicolon (`:`) and then the typename of the base class. Following the typename of the base class, there should be a comma and then a comma-separated list of implemented interfaces. If the class does not implement any interfaces, the comma is STILL REQUIRED at the end of the base class typename. The interface list should NOT end with a comma.
 
 Following the interface list, a dollar sign (`$`) is required followed by the size of the type. For reference types, this should include the actual size of the type plus the pointer size (for the object header). After the size, a semicolon (`;`) must appear.
 
